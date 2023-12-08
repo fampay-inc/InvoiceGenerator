@@ -45,8 +45,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'InvoiceGenerator'
-copyright = u'2014, See CONTRIBUTORS.rst'
+project = 'InvoiceGenerator'
+copyright = '2014, See CONTRIBUTORS.rst'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -198,8 +198,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'InvoiceGenerator.tex', u'InvoiceGenerator Documentation',
-   u'See CONTRIBUTORS.rst', 'manual'),
+  ('index', 'InvoiceGenerator.tex', 'InvoiceGenerator Documentation',
+   'See CONTRIBUTORS.rst', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -228,8 +228,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'invoicegenerator', u'InvoiceGenerator Documentation',
-     [u'See CONTRIBUTORS.rst'], 1)
+    ('index', 'invoicegenerator', 'InvoiceGenerator Documentation',
+     ['See CONTRIBUTORS.rst'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -242,8 +242,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'InvoiceGenerator', u'InvoiceGenerator Documentation',
-   u'See CONTRIBUTORS.rst', 'InvoiceGenerator', 'One line description of project.',
+  ('index', 'InvoiceGenerator', 'InvoiceGenerator Documentation',
+   'See CONTRIBUTORS.rst', 'InvoiceGenerator', 'One line description of project.',
    'Miscellaneous'),
 ]
 

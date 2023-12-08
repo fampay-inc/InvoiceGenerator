@@ -80,15 +80,15 @@ class Address(UnicodeProperty):
             address_line.append(self.division)
         address_line += [
             self.address,
-            u' '.join(filter(None, (self.zip_code, self.city))),
+            ' '.join([_f for _f in (self.zip_code, self.city) if _f]),
             ]
         if self.country:
             address_line.append(self.country)
         if self.vat_id:
-            address_line.append(_(u'Vat in: %s') % self.vat_id)
+            address_line.append(_('Vat in: %s') % self.vat_id)
 
         if self.ir:
-            address_line.append(_(u'IR: %s') % self.ir)
+            address_line.append(_('IR: %s') % self.ir)
 
         return address_line
 
@@ -241,7 +241,7 @@ class Invoice(UnicodeProperty):
     #: currency_locale: locale according to which will be the written currency representations
     currency_locale = "cs_CZ.UTF-8"
     #: currency identifier (e.g. "$" or "Kč")
-    currency = u"Kč"
+    currency = "Kč"
 
     use_tax = False
 
@@ -326,7 +326,7 @@ class Invoice(UnicodeProperty):
 
     def generate_breakdown_vat_table(self):
         rows = []
-        for vat, items in self.generate_breakdown_vat().items():
+        for vat, items in list(self.generate_breakdown_vat().items()):
             rows.append((vat, items['total'], items['total_tax'], items['tax']))
 
         return rows
@@ -370,7 +370,7 @@ class QrCodeBuilder(object):
         except AttributeError:
             pass
 
-        qr_kwargs = {k: v for k, v in qr_kwargs.items() if v}
+        qr_kwargs = {k: v for k, v in list(qr_kwargs.items()) if v}
 
         return QRPlatbaGenerator(**qr_kwargs)
 

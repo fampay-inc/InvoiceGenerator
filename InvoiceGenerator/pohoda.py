@@ -35,7 +35,7 @@ class SimpleInvoice(BaseInvoice):
 
         if tax_rates:
             self.tax_rates = tax_rates
-        self.inv_tax_rates = {v: k for k, v in self.tax_rates.items()}
+        self.inv_tax_rates = {v: k for k, v in list(self.tax_rates.items())}
 
     def _add_item(self, xml_invoice, item):
         invoice_item = ET.SubElement(xml_invoice, "{%s}invoiceItem" % self._inv_ns)
@@ -55,7 +55,7 @@ class SimpleInvoice(BaseInvoice):
         return invoice_item
 
     def add_elements(self, parrent_element, namespace, element_map):
-        for element, content in element_map.items():
+        for element, content in list(element_map.items()):
             if content is not None:
                 if type(content) == datetime.date:
                     content = content.isoformat()
@@ -112,7 +112,7 @@ class SimpleInvoice(BaseInvoice):
         ET.SubElement(invoice_summary, "{%s}roundingDocument" % self._inv_ns).text = "math2one"
         home_currency = ET.SubElement(invoice_summary, "{%s}homeCurrency" % self._inv_ns)
         breakdown = self.invoice.generate_breakdown_vat()
-        for rate_ident, rate in self.tax_rates.items():
+        for rate_ident, rate in list(self.tax_rates.items()):
             if rate in breakdown:
                 rate_camel = rate_ident.capitalize()
                 ET.SubElement(home_currency, '{%s}price%s' % (self._typ_ns, rate_camel)).text = str(breakdown[rate]['total_tax'])
